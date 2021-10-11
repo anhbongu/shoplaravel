@@ -27,8 +27,8 @@ class AdminProductController extends Controller
         if(isset($request->select_filter)) $result->where('products.pro_category_id', '=', $request->select_filter);
                              
           
-        $product = $result->orderby('id', 'desc')->paginate(10);           
-
+        $product = $result->orderby('id', 'desc')->simplePaginate(5);           
+        $product->appends(['sort' => 'votes']);
 
 
         $category = $this->getCategory();

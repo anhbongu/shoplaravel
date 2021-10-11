@@ -42,23 +42,21 @@
 							</div>
 							<p class="availability in-stock">Availability: <span>In stock</span></p>
 							<div class="actions-e">
-								<div class="action-buttons-single">
-									<div class="inputx-content">
-										<label for="qty">Quantity:</label>
-										<input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty">
-									</div>
-									<div class="add-to-cart">
-										<a href="{{ route('shopping.order', [$product->id, $product->pro_price]) }}">Add to cart</a>
-									</div>
-									<div class="add-to-links">
-										<div class="add-to-wishlist">
-											<a href="#" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+								<form action="{{ route('shopping.order', [$product->id, $product->pro_price]) }}" method="post">
+									<div class="action-buttons-single">
+										<div class="inputx-content">
+											<label for="qty">Quantity:</label>
+											<input type="text" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty">
 										</div>
-										<div class="compare-button">
-											<a href="#" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-										</div>									
-									</div>
-								</div>
+										<div class="add-to-cart">
+											<button type="submit">Add to cart</button>
+											<!-- <a href="{{ route('shopping.order', [$product->id, $product->pro_price]) }}"></a> -->
+										</div>
+
+									</div>	
+									@csrf								
+								</form>
+
 							</div>
 							<div class="singl-share">
 	                            <a href="#"><img src="../public/user/img/single-share.png" alt=""></a>
@@ -148,7 +146,7 @@
 		  </div>				
 		</div>
 
-		<div class="total-comment">({{ $product->pro_total_number }}) bình luận</div>
+		<div class="total-comment">({{ $product->pro_total_number>0 ? $product->pro_total_number : 0 }}) bình luận</div>
 		
 		<div class="comment">
 			<div id="comment"></div>

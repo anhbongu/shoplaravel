@@ -69,12 +69,8 @@
 
 							<div class="col-md-4 col-sm-4 col-xs-12 text-center">
 								<div class="pages">
-									<label>Page:</label>
-									<ul>
-										<li class="current">1</li>
-										<li><a href="#">2</a></li>
-										<li><a href="#" class="next i-next" title="Next"><i class="fa fa-arrow-right"></i></a></li>
-									</ul>
+									
+										{{ $article->links() }}
 								</div>
 							</div>
 						</div>

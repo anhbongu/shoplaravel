@@ -73,9 +73,10 @@
 		        <tbody>
 
 		        	@if(isset($product))
+		        	<?php $y=1 ?>
 		        		@foreach($product as $items)
 				          <tr class="even pointer">
-				            <td class="a-center ">{{  $items->id }}</td>
+				            <td class="a-center ">{{  $y }}</td>
 				            <td class=" ">{{  $items->pro_name }}
 				            	<ul>
 				            		<li>Đánh giá:
@@ -123,20 +124,27 @@
 				            </td>
 				      
 				          </tr>
+				          <?php $y++ ?>
 		        		@endforeach
 
 		        	@endif
 
-		         
+		
 		        </tbody>
 		      </table>
 		    </div>
-					
-				
+			<div class="row">
+
+			   <div class="col-sm-7">
+			      <div class="dataTables_paginate paging_simple_numbers" id="datatable-responsive_paginate">
+			         {{ $product->links() }}
+			      </div>
+			   </div>
+			</div>				
+
 		  </div>
 		</div>
 	</div>		
 </div>
-
 
 @endsection

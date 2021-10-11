@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ArticleController extends MainController
 {   
     public function index(){
-        $article = ArticleModel::paginate(10);
+        $article = ArticleModel::simplePaginate(4);
         return view('article.index', [
             'article'=>$article
         ]);

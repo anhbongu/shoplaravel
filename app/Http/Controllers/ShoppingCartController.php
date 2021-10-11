@@ -9,28 +9,55 @@ use Illuminate\Support\Facades\Auth;
 
 class ShoppingCartController extends MainController
 {
+    public function orderPost(Request $request){
+        dd(0);
+    }
+
+
     //mua hàng
     public function order(Request $request){
+
         if(Auth::check()){
-            // dd($request->all());
+
+
+
             $url = $request->segment(3);
             $arrUrl = explode('-', $url);
             $pro_price = array_pop($arrUrl);
             $pro_id = array_shift($arrUrl);
-
             $cart = session()->get('cart');
-            if(empty($cart)){
-                $cart['quantity'][$pro_id] = 1;
-                $cart['price'][$pro_id] = $pro_price;
-            }else{
-                if(key_exists($pro_id, $cart['quantity'])){
-                    $cart['quantity'][$pro_id] += 1;
-                    $cart['price'][$pro_id] = $pro_price * $cart['quantity'][$pro_id];
+
+
+            if(isset($request->_token)){
+                if(empty($cart)){
+                    $cart['quantity'][$pro_id] = $request->qty;
+                    $cart['price'][$pro_id] = $pro_price;
                 }else{
+                    if(key_exists($pro_id, $cart['quantity'])){
+                        $cart['quantity'][$pro_id] += $request->qty;
+                        $cart['price'][$pro_id] = $pro_price * $cart['quantity'][$pro_id];
+                    }else{
+                        $cart['quantity'][$pro_id] = $request->qty;
+                        $cart['price'][$pro_id] = $pro_price;               
+                    }
+                }                
+            }else{
+                if(empty($cart)){
                     $cart['quantity'][$pro_id] = 1;
-                    $cart['price'][$pro_id] = $pro_price;               
-                }
+                    $cart['price'][$pro_id] = $pro_price;
+                }else{
+                    if(key_exists($pro_id, $cart['quantity'])){
+                        $cart['quantity'][$pro_id] += 1;
+                        $cart['price'][$pro_id] = $pro_price * $cart['quantity'][$pro_id];
+                    }else{
+                        $cart['quantity'][$pro_id] = 1;
+                        $cart['price'][$pro_id] = $pro_price;               
+                    }
+                }                
             }
+
+            
+
             $totalQuantity = array_sum($cart['quantity']);
 
             session()->put('totalQuantity', $totalQuantity);
@@ -44,7 +71,7 @@ class ShoppingCartController extends MainController
             session()->flash('error', 'vui lòng đăng nhập để mua hàng');
             return redirect()->route('login');
         }
-
+        dd();
 
     }
 

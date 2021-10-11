@@ -13,14 +13,14 @@
 			<div class="x_content">
 
 				<br>
-				<form id="demo-form2" action="store" method="post" class="form-horizontal form-label-left" enctype="multipart/form-data" >
+				<form id="demo-form2" action="store" method="post" class="form-horizontal form-label-left" enctype="multipart/form-data" novalidate >
 
 					<div class="item form-group">
 
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tên sản phẩm<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input name="pro_name" type="text" id="first-name" required="required" class="form-control " value="">
+							<input name="pro_name" type="text" id="first-name" required="required" class="form-control " value="{{ old('pro_name'); }}">
 						</div>
 						@if($errors->has('pro_name'))
 							<span style="color:red">{{ $errors->first('pro_name') }}</span>
@@ -32,7 +32,7 @@
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Description<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<textarea name="pro_description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							<textarea name="pro_description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ old('pro_description'); }}</textarea>
 						</div>
 						@if($errors->has('pro_description'))
 							<span style="color:red">{{ $errors->first('pro_description') }}</span>
@@ -45,7 +45,7 @@
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nội dung<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<textarea id="editor1" name="pro_content"  class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							<textarea id="editor1" name="pro_content"  class="form-control" id="exampleFormControlTextarea1" rows="3">{{ old('pro_content'); }}</textarea>
 						</div>
 						@if($errors->has('pro_content'))
 							<span style="color:red">{{ $errors->first('pro_content') }}</span>
@@ -62,7 +62,7 @@
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Meta title<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input name="pro_title_seo" type="text" id="first-name" required="required" class="form-control " value="">
+							<input name="pro_title_seo" type="text" id="first-name" required="required" class="form-control " value="{{ old('pro_title_seo'); }}">
 						</div>
 
 					</div>
@@ -71,7 +71,7 @@
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Meta Description<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input name="pro_description_seo" type="text" id="first-name" required="required" class="form-control " value="">
+							<input name="pro_description_seo" type="text" id="first-name" required="required" class="form-control " value="{{ old('pro_description_seo'); }}">
 						</div>
 
 					</div>
@@ -102,7 +102,7 @@ h
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Gía sản phẩm<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input name="pro_price" type="text" id="first-name" required="required" class="form-control " value="">
+							<input name="pro_price" type="text" id="first-name" required="required" class="form-control " value="{{ old('pro_price'); }}">
 						</div>
 						@if($errors->has('pro_price'))
 							<span style="color:red">{{ $errors->first('pro_price') }}</span>
@@ -114,7 +114,7 @@ h
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Khuyến mãi<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input name="pro_sale" type="text" id="first-name" required="required" class="form-control " value="">
+							<input name="pro_sale" type="text" id="first-name" required="required" class="form-control " value="{{ old('pro_sale'); }}">
 						</div>
 
 					</div>
@@ -123,7 +123,7 @@ h
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Số lượng<span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input name="pro_number" type="text" id="first-name" required="required" class="form-control " value="">
+							<input name="pro_number" type="text" id="first-name" required="required" class="form-control " value="{{ old('pro_number'); }}">
 						</div>
 
 					</div>

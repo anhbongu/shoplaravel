@@ -41,6 +41,7 @@ Route::get('san-pham/{slug}-{id}', 			[ProductController::class, 'details'])->na
 //MUA HÀNG
 Route::group(['prefix' => 'shopping'], function() {
     Route::get('order/{id}-{price}',        [ShoppingCartController::class, 'order'])->name('shopping.order');
+    Route::post('order/{id}-{price}',       [ShoppingCartController::class, 'order'])->name('shopping.order');
     Route::get('cart',                      [ShoppingCartController::class, 'cart'])->name('shopping.cart');
     Route::get('cart/delete/{id?}',         [ShoppingCartController::class, 'deleteCart'])->name('shopping.cart.delete');
     Route::post('buy',                      [ShoppingCartController::class, 'buy'])->name('shopping.buy');
